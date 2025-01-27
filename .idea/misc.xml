@@ -10,6 +10,7 @@
         <option value="$PROJECT_DIR$/01-spring-boot-overview/01-spring-boot-demo/pom.xml" />
         <option value="$PROJECT_DIR$/01-spring-boot-overview/05-command-line-demo/pom.xml" />
         <option value="$PROJECT_DIR$/01-spring-boot-overview/04-actuator-security-demo/pom.xml" />
+        <option value="$PROJECT_DIR$/02-spring-boot-spring-core/01-constructor-injection/pom.xml" />
       </list>
     </option>
   </component>

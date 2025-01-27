@@ -6,12 +6,13 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="04-actuator-security-demo" />
         <module name="06-properties-demo" />
         <module name="05-command-line-demo" />
-        <module name="03-actuator-demo" />
-        <module name="01-spring-boot-demo" />
         <module name="02-dev-tools-demo" />
+        <module name="04-actuator-security-demo" />
+        <module name="03-actuator-demo" />
+        <module name="springcoredemo" />
+        <module name="01-spring-boot-demo" />
       </profile>
     </annotationProcessing>
   </component>
@@ -23,6 +24,7 @@
       <module name="04-actuator-security-demo" options="-parameters" />
       <module name="05-command-line-demo" options="-parameters" />
       <module name="06-properties-demo" options="-parameters" />
+      <module name="springcoredemo" options="-parameters" />
     </option>
   </component>
 </project>
