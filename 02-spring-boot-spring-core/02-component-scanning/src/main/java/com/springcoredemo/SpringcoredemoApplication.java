@@ -3,6 +3,11 @@ package com.springcoredemo;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+/* @SpringBootApplication (
+		scanBasePackages = {"com.springcoredemo",
+							"com.util"})
+ */
+
 @SpringBootApplication
 public class SpringcoredemoApplication {
 
