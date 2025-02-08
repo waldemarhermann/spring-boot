@@ -4,6 +4,6 @@ import com.cruddemo.entity.Student;
 
 public interface StudentDAO {
 
-    void save(Student theStudent);
+     void save(Student theStudent);
 
 }
