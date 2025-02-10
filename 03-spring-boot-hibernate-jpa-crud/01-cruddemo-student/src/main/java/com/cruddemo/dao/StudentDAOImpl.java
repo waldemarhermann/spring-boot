@@ -46,13 +46,39 @@ public class StudentDAOImpl implements StudentDAO{
     public List<Student> findByFirstName(String firstName) {
         // create query
         TypedQuery<Student> theQuery = entityManager.createQuery(
-                "FROM Student WHERE firstName=:theData", Student.class);
+                "FROM Student WHERE firstName=:theData", Student.class);  // warum muss hier nicht .executeUpdate() gemacht werdeb
 
         // set query parameters
         theQuery.setParameter("theData", firstName);
 
         // return query results
         return theQuery.getResultList();
+    }
+
+    @Override
+    @Transactional
+    public void updateStudent(Student student) {
+        entityManager.merge(student);
+    }
+
+    @Override
+    @Transactional
+    public int updateAllStudents() {
+        int numRowsUpdated = entityManager.createQuery("UPDATE Student SET lastName='Hermann'").executeUpdate();  // hier dagegen schon?
+        return numRowsUpdated;
+    }
+
+    @Override
+    @Transactional
+    public void deleteStudent(Integer id) {
+        Student student = findById(id);
+        entityManager.remove(student);
+    }
+
+    @Override
+    @Transactional
+    public Integer deleteAllStudent() {
+        return entityManager.createQuery("DELETE FROM Student").executeUpdate();
     }
 }
 
