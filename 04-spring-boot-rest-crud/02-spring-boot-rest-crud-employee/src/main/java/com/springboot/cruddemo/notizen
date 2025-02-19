@@ -1,0 +1,77 @@
+Zusammenfassung: Wie Spring mit den Komponenten arbeitet (Starten & Anfrageverarbeitung)
+
+Spring geht in zwei Phasen vor:
+1️⃣ Beim Start der Anwendung (Bean-Erstellung)
+2️⃣ Bei einer Client-Anfrage (Request-Response-Zyklus)
+1️⃣ Bean-Erstellung beim Start der Anwendung (Dependency Injection)
+
+Spring arbeitet nach dem Dependency Injection (DI)-Prinzip und analysiert zuerst alle Beans, um ihre Abhängigkeiten aufzulösen.
+Reihenfolge der Bean-Erstellung
+
+Spring erstellt die Beans von unten nach oben, also basierend auf den Abhängigkeiten:
+
+1️⃣ DAO (EmployeeDAOJpaImpl)
+
+    Benötigt EntityManager, den Spring bereitstellt.
+    Da keine weiteren Abhängigkeiten bestehen, wird diese Bean zuerst erstellt.
+
+2️⃣ Service (EmployeeServiceImpl)
+
+    Benötigt eine EmployeeDAO-Bean.
+    Spring erkennt EmployeeDAOJpaImpl als Implementierung und gibt sie weiter.
+    Danach wird EmployeeServiceImpl erstellt.
+
+3️⃣ Controller (EmployeeRestController)
+
+    Benötigt eine EmployeeService-Bean.
+    Spring erkennt EmployeeServiceImpl als Implementierung und gibt sie weiter.
+    Danach wird EmployeeRestController erstellt.
+
+➡ Spring baut den Dependency Graph so auf:
+
+EntityManager  (Spring intern)
+   ↓
+EmployeeDAOJpaImpl  (DAO)
+   ↓
+EmployeeServiceImpl  (Service)
+   ↓
+EmployeeRestController  (Controller)
+
+🚀 Ergebnis: Alle Beans sind nun erstellt und die Anwendung kann Anfragen verarbeiten.
+
+
+2️⃣ Verarbeitung einer HTTP-Anfrage (Request-Response-Zyklus)
+
+Sobald die Anwendung läuft, wartet sie auf Anfragen von Clients.
+
+Wenn ein Client eine Anfrage stellt (z. B. GET /api/employees), läuft der Prozess so ab:
+
+1️⃣ Der Client sendet eine Anfrage an den Controller.
+
+    EmployeeRestController.findAll() wird aufgerufen.
+
+2️⃣ Der Controller delegiert die Anfrage an den Service.
+
+    employeeService.findAll() wird aufgerufen.
+
+3️⃣ Der Service delegiert die Anfrage an den DAO.
+
+    employeeDAO.findAll() wird aufgerufen.
+
+4️⃣ Der DAO führt eine Datenbankabfrage aus.
+
+    EntityManager holt die Employee-Daten aus der Datenbank.
+
+5️⃣ Die Daten wandern zurück durch die Schichten:
+
+    DAO → Service → Controller → Client
+
+6️⃣ Der Client erhält eine JSON-Antwort mit den Employee-Daten.
+🎯 Fazit
+
+✔ Beim Start erstellt Spring zuerst alle Beans in der richtigen Reihenfolge (DAO → Service → Controller), basierend auf den Abhängigkeiten.
+✔ Bei einer Anfrage geht es in die andere Richtung: Client → Controller → Service → DAO → Datenbank → und zurück.
+✔ Spring sorgt dafür, dass alle Abhängigkeiten korrekt injiziert werden, sodass der Controller nur mit dem Service spricht und der Service mit dem DAO.
+
+Das Ergebnis: Eine saubere, modulare und wartbare Spring-Anwendung. 🚀
+

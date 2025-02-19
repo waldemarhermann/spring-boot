@@ -62,7 +62,7 @@ public class EmployeeRestController {
 
         employeeService.deleteById(employeeId);
 
-        return "Deledet id - " + employeeId;
+        return "Deleted id - " + employeeId;
     }
 
 }
