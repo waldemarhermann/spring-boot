@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <title>Student Registration Form</title>
@@ -18,7 +18,27 @@
 
     <br><br>
 
+    Country:
+
+    <select th:field="*{country}">
+
+        <option th:each="tempCountry : ${countries}"
+                th:value="${tempCountry}"
+                th:text="${tempCountry}"/>
+
+    </select>
+
     <input type="submit" value="submit" />
+
+    <br><br>
+
+    Favorite language:
+
+    <input type="radio" th:field="*{language}"
+                        th:each="tempLanguage : ${languages}"
+                        th:value="${tempLanguage}"
+                        th:text="${tempLanguage}"/>
+
 
 </form>
 
