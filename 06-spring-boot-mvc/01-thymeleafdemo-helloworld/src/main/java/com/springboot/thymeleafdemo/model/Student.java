@@ -6,6 +6,7 @@ public class Student {
     private String lastName;
     private String country;
     private String language;
+    private String operatingSystem;
 
     public Student() {
 
@@ -41,6 +42,14 @@ public class Student {
 
     public void setLanguage(String language) {
         this.language = language;
+    }
+
+    public String getOperatingSystem() {
+        return operatingSystem;
+    }
+
+    public void setOperatingSystem(String operatingSystem) {
+        this.operatingSystem = operatingSystem;
     }
 
 }
