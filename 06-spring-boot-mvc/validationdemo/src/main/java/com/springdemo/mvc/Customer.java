@@ -5,6 +5,15 @@ import jakarta.validation.constraints.*;
 
 public class Customer {
 
+    /* 
+     * Das Customer-Objekt wird im Controller erstellt und im Model gespeichert.
+     *
+     * Beim Absenden des Formulars erstellt Spring ein neues Customer-Objekt und
+     * setzt die Eingaben aus dem Formular
+     *
+     * Die Validierung erfolgt automatisch durch Bean Validation (@Valid).
+     */
+
     private String firstName;
 
     @NotNull(message="is required")
@@ -19,6 +28,7 @@ public class Customer {
     @Pattern(regexp = "^[a-zA-Z0-9]{5}", message = "only 5 chars/digits")
     private String postalCode;
 
+    // Benutzerdefinierte Validierung: CourseCode muss mit dem Wert in "value" beginnen
     @CourseCode(value="HMN", message="must start with HMN")
     private String courseCode;
 
