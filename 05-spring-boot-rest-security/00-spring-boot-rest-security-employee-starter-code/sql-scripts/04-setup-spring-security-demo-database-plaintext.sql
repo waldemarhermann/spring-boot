@@ -20,9 +20,9 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` 
 VALUES 
-('john','{noop}test123',1),
-('mary','{noop}test123',1),
-('susan','{noop}test123',1);
+('john','{bcrypt}$2a$10$NtlqWu/xOpeE.AaNff8Zw.gX677USI3ilRzvt58RWw.Ns81Qtcbui',1),
+('mary','{noop}$2a$10$NtlqWu/xOpeE.AaNff8Zw.gX677USI3ilRzvt58RWw.Ns81Qtcbui',1),
+('susan','{noop}$2a$10$NtlqWu/xOpeE.AaNff8Zw.gX677USI3ilRzvt58RWw.Ns81Qtcbui',1);
 
 
 --
