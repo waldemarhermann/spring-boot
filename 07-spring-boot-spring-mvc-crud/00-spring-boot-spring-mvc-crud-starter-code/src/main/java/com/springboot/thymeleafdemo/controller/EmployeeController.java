@@ -5,10 +5,7 @@ import com.springboot.thymeleafdemo.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -49,6 +46,22 @@ public class EmployeeController {
         employeeService.save(employee);
 
         // redirect --> GET-Methode wird angewandt
+        return "redirect:/employees/list";
+    }
+
+    @GetMapping("/showFormForUpdate")
+    public String showFormForUpdate(@RequestParam("employeeId") int id, Model model) {
+        Employee employee = employeeService.findById(id);
+
+        model.addAttribute(employee);
+
+        return "employees/employee-form";
+    }
+
+    @GetMapping("/deleteEmployee")
+    public String deleteEmployee(@RequestParam("employeedId") int id) {
+        employeeService.deleteById(id);
+
         return "redirect:/employees/list";
     }
 }
