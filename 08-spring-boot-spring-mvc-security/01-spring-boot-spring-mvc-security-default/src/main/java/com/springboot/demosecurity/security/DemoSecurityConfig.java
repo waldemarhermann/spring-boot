@@ -56,6 +56,8 @@ public class DemoSecurityConfig {
 
                                 // Jeder darf die Login-Seite aufrufen, selbst wenn er nicht eingeloggt ist.
                                 .permitAll()
+                )
+                .logout(logout -> logout.permitAll()
                 );
 
         return http.build();
