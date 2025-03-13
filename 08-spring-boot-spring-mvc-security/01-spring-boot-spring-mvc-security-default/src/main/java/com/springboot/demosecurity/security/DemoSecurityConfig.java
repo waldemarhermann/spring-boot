@@ -22,12 +22,12 @@ public class DemoSecurityConfig {
 
         UserDetails maxim = User.builder()
                 .username("maxim")
-                .password("test123")
+                .password("{noop}test123")
                 .roles("EMPLOYEE, MANAGER")
                 .build();
 
         UserDetails efimia = User.builder()
-                .username("efimia")
+                .username("{noop}efimia")
                 .password("test123")
                 .roles("EMPLOYEE, MANAGER, ADMIN")
                 .build();
