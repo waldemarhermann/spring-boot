@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+                xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Access Denied</title>
+</head>
+<body>
+
+<h3>Access denied: You can´t login with your role: </h3>
+<span sec:authentication="principal.authorities"></span>
+
+<br><br>
+<hr>
+
+<a th:href="@{/}">Back to Home Page</a>
+
+</body>
+</html>
